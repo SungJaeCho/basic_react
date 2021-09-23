@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //contcat, filter, map, slice, spread 연산자
+        console.log("1.==========스프레드 연산자");
+        const a = [1, 2, 3];
+        const b = [...a]; // spread연산자  [1,2,3]이됨 깊은 복사
+        b.push(4); //기존배열에 추가
+        console.log(`a의 값은 : ${a}`); // 1,2,3
+        console.log(`b의 값은 : ${b}`); // 1,2,3,4
+
+        console.log("2.==========추가하기");
+        const a2 = [1, 2, 3];
+        const b2 = a.concat(4); // 깊은복사
+        console.log(`a2의 값은 : ${a2}`); // 1,2,3
+        console.log(`b2의 값은 : ${b2}`); // 1,2,3,4
+        const c2 = [0, ...a2, 4];
+        console.log(`c2의 값은 : ${c2}`); // 1,2,3,4
+
+        console.log("3.==========걸러내기"); // 삭제하기
+        const a3 = [1, 2, 3];
+        const b3 = a3.filter((n) => { return n != 1 }); // boolean을 return 받는다. ->true만 걸러냄
+        console.log(`b3의 값은 : ${b3}`);
+
+        console.log("4.==========걸러내기");
+        const a4 = [1, 2, 3];
+        const b4 = a4.slice(0, 2);
+        console.log(`b4의 값은 : ${b4}`); // 1,2
+        const c4 = [a4.slice(0, 2)];
+        console.log(`c4의 값은 : ${c4}`); // 1,2
+    </script>
+</body>
+
+</html>
