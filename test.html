@@ -46,7 +46,8 @@
         //     console.log(a5[i]);
         // }
         //a5.forEach((n) => { console.log(n) }); // return void라 return 못함 못씀
-        const b5 = a5.map();
+        const b5 = a5.map((n) => n + 10); // const b5 = [...a5];
+        console.log(b5);
     </script>
 </body>
 

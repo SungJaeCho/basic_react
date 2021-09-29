@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 // 0.React엔진 - 데이터 변경 감지해서 UI그려줌
@@ -15,25 +14,16 @@ import './App.css';
 // 2-6-3 라이브러리 사용(부트스트랩, componet-styled)
 // 콤포넌화시 반드시 깊은 복사를 이용 하자
 
-let a = 10;
-const b = 20;
-
 function App() {
-  let c;
-  console.log(c);
-
-  // 2-6-1 방법
-  const myStyle = {
-    color: 'red',
-  };
+  let list = [1, 2, 3];
 
   return (
     <div>
-      <div style={myStyle}>
-        Hi React {a === 10 ? '10입니다.' : '10이 아닙니다.'}
+      <div>
+        {list.map((n) => (
+          <h1>{n}</h1>
+        ))}
       </div>
-      <h1 className="box-style">해딩태크 {b === 20 && '20입니다.'} </h1>
-      <hr />
     </div>
   );
 }
