@@ -35,8 +35,18 @@
         const a4 = [1, 2, 3];
         const b4 = a4.slice(0, 2);
         console.log(`b4의 값은 : ${b4}`); // 1,2
-        const c4 = [a4.slice(0, 2)];
-        console.log(`c4의 값은 : ${c4}`); // 1,2
+        const c4_0 = [a4.slice(0, 2), 4];
+        const c4 = [...a4.slice(0, 2), 4, ...a4.slice(2, 3)];
+        console.log(c4_0); //[[1,2],[4]]
+        console.log(c4); // [1,2,4,3]
+
+        console.log("5.==========반복하기");
+        const a5 = [1, 2, 3];
+        // for(let i=0; i<a5.length; i++) { jsx에서 못씀
+        //     console.log(a5[i]);
+        // }
+        //a5.forEach((n) => { console.log(n) }); // return void라 return 못함 못씀
+        const b5 = a5.map();
     </script>
 </body>
 
