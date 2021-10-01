@@ -48,6 +48,22 @@
         //a5.forEach((n) => { console.log(n) }); // return void라 return 못함 못씀
         const b5 = a5.map((n) => n + 10); // const b5 = [...a5];
         console.log(b5);
+
+        const data = { phone: "2222" };
+        const a6 = { id: 1, name: "홍길동", phone: "1111", age: 38, gender: "남" };
+        const b6 = { ...a6, ...data };
+        console.log(b6);
+
+        const users = [
+            { id: 1, name: "강백호", phone: "2222" },
+            { id: 2, name: "서태웅", phone: "3333" },
+            { id: 3, name: "채치수", phone: "4444" },
+        ];
+        const updateUserDto = {
+            id: 2, name: "임대협"
+        };
+
+
     </script>
 </body>
 
