@@ -63,6 +63,8 @@
             id: 2, name: "임대협"
         };
 
+        const newUsers = users.map(user => user.id === updateUserDto.id ? { ...user, ...updateUserDto } : user);
+        console.log("newUser", newUsers);
 
     </script>
 </body>
