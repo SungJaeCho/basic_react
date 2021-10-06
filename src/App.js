@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 
 // 0.React엔진 - 데이터 변경 감지해서 UI그려줌
@@ -15,15 +16,22 @@ import './App.css';
 // 콤포넌화시 반드시 깊은 복사를 이용 하자
 
 function App() {
-  let list = [1, 2, 3];
+  // let list = [1, 2, 3];
 
+  // let number = 1; // 상태값 아님
+  const [number, setNumber] = useState(1); // React 안에 hooks라이브러리
+
+  const add = () => {
+    // number++;
+    setNumber(number + 1); //리액트한테 number값 변경할께 라고 요청
+    console.log(number);
+  };
+
+  // 랜더링 시점 = 상태값 변경
   return (
     <div>
-      <div>
-        {list.map((n) => (
-          <h1>{n}</h1>
-        ))}
-      </div>
+      <h1>숫자 : {number}</h1>
+      <button onClick={add}>더하기</button>
     </div>
   );
 }
