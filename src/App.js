@@ -3,6 +3,7 @@ import './App.css';
 
 function App() {
   const [data, setData] = useState(0);
+  const [search, setSearch] = useState(0);
 
   const download = () => {
     let downloadData = 5; //가정
@@ -10,14 +11,21 @@ function App() {
   };
 
   // 실행시점 : (1) App() 함수가 최초 실행될때(App() 그림이 최초 그려질 때)
-  // (2) 상태변수가 변경될 때
+  // (2) 상태변수가 변경될 때 (그게 dependencyList에 등록이 되어있어야함.)
   useEffect(() => {
     console.log('useEffect() 실행됨');
     download();
-  }, []);
+  }, [search]);
 
   return (
     <div>
+      <button
+        onClick={() => {
+          setSearch(2);
+        }}
+      >
+        검색하기
+      </button>
       <h1>데이터 : {data}</h1>
       <button
         onClick={() => {
