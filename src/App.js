@@ -1,39 +1,46 @@
-import { useEffect, useState } from 'react';
+import { useMemo } from 'react';
+import { useState } from 'react/cjs/react.development';
 import './App.css';
 
-function App() {
-  const [data, setData] = useState(0);
-  const [search, setSearch] = useState(0);
+// useMemo => 메모라이제이션(기억)
 
-  const download = () => {
-    let downloadData = 5; //가정
-    setData(downloadData);
+function App() {
+  const [list, setList] = useState([1, 2, 3, 4]);
+  const [str, setStr] = useState('합계');
+
+  const getAddResult = () => {
+    let sum = 0;
+    list.forEach((i) => (sum = sum + i));
+    console.log('sum:' + sum);
+    return sum;
   };
 
-  // 실행시점 : (1) App() 함수가 최초 실행될때(App() 그림이 최초 그려질 때)
-  // (2) 상태변수가 변경될 때 (그게 dependencyList에 등록이 되어있어야함.)
-  useEffect(() => {
-    console.log('useEffect() 실행됨');
-    download();
-  }, [search]);
+  const addResult = useMemo(() => getAddResult(), [list]); //함수 순서도 중요
 
   return (
     <div>
       <button
         onClick={() => {
-          setSearch(2);
+          setStr('안녕');
         }}
       >
-        검색하기
+        문자 변경
       </button>
-      <h1>데이터 : {data}</h1>
       <button
         onClick={() => {
-          setData(data + 1);
+          setList([...list, 10]);
         }}
       >
-        더하기
+        리스트값 추가
       </button>
+      <div>
+        {list.map((i) => (
+          <h1>{i}</h1>
+        ))}
+      </div>
+      <div>
+        {str} : {addResult}
+      </div>
     </div>
   );
 }
