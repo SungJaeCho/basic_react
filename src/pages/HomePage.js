@@ -6,7 +6,7 @@ import Home from '../components/home/Home';
 const HomePage = () => {
   // http요청 (jquery ajax(안씀), fetch, axios(다운로드해야함))
   const [boards, setBoards] = useState([]);
-  const [numbers, setNumbers] = useState(0);
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
     // 다운로드를 받았다고 가정 = fetch(), axios(), ajax() 비동기로 실행되므로
@@ -18,17 +18,13 @@ const HomePage = () => {
 
     // 빈데이터가 들어가고 data받고 다시 그려짐 (그래서 반드시 useState상태 데이터이여야함)
     setBoards([...data]);
+    setUser({ id: 1, username: 'ssar' });
   }, []); //빈배열이면 한번만 실행됨
 
   return (
     <div>
       <Header />
-      <Home
-        boards={boards}
-        setBoards={setBoards}
-        numbers={numbers}
-        setNumbers={setNumbers}
-      />
+      <Home boards={boards} setBoards={setBoards} user={user} />
       <Footer />
     </div>
   );
