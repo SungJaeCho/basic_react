@@ -6,6 +6,7 @@ import Home from '../components/home/Home';
 const HomePage = () => {
   // http요청 (jquery ajax(안씀), fetch, axios(다운로드해야함))
   const [boards, setBoards] = useState([]);
+  const [numbers, setNumbers] = useState(0);
 
   useEffect(() => {
     // 다운로드를 받았다고 가정 = fetch(), axios(), ajax() 비동기로 실행되므로
@@ -22,7 +23,12 @@ const HomePage = () => {
   return (
     <div>
       <Header />
-      <Home boards={boards} />
+      <Home
+        boards={boards}
+        setBoards={setBoards}
+        numbers={numbers}
+        setNumbers={setNumbers}
+      />
       <Footer />
     </div>
   );
