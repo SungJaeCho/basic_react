@@ -4,6 +4,10 @@ import styled from 'styled-components';
 const StyledDeleteButton = styled.button`
   color: ${(props) => (props.user.username === 'ssar' ? 'blue' : 'red')};
 `;
+// 스타일 상속
+const StyledAddButton = styled(StyledDeleteButton)`
+  background-color: green;
+`;
 
 // Function 방식
 const Home = (props) => {
@@ -13,6 +17,7 @@ const Home = (props) => {
 
   return (
     <div>
+      <StyledAddButton user={user}>더하기</StyledAddButton>
       <StyledDeleteButton user={user} onClick={() => setBoards([])}>
         전체삭제
       </StyledDeleteButton>
