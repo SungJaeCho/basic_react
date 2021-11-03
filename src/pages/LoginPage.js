@@ -2,11 +2,11 @@ import React from 'react';
 import Login from '../components/login/Login';
 
 const LoginPage = (props) => {
+  const { history } = props;
   console.log('Loginpage', props);
-  console.log(props.match.params.id);
-  props.history.goBack();
   return (
     <div>
+      <button onClick={() => history.push('/')}>뒤로가기</button>
       <Login />
     </div>
   );
