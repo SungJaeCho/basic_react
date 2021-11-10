@@ -2,13 +2,15 @@
 
 import { Route } from 'react-router';
 import Navigation from './components/Navigation';
+import ListPage from './pages/ListPage';
+import WritePage from './pages/WritePage';
 
 function App() {
   return (
     <div>
       <Navigation />
-      <Route path="/" eact={true} component={ListPage} />
-      <Route path="/write" eact={true} component={WritePage} />
+      <Route path="/" exact={true} component={ListPage} />
+      <Route path="/write" exact={true} component={WritePage} />
     </div>
   );
 }
