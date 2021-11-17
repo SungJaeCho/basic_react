@@ -1,9 +1,5 @@
 import React from 'react';
-
-const handleWrite = () => {
-  // ListPage의 setPosts에 담기
-  let post = { id: 6, title: '인풋값' };
-};
+// 안씀
 
 const WritePage = () => {
   return (
@@ -12,9 +8,7 @@ const WritePage = () => {
       <hr />
       <form>
         <input type="text" placeholder="제목" />
-        <button type="button" onClick={handleWrite}>
-          글쓰기
-        </button>
+        <button type="button">글쓰기</button>
       </form>
     </div>
   );
