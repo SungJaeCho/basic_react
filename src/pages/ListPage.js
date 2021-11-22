@@ -32,10 +32,22 @@ const ListPage = () => {
   };
 
   const handleChangeTitle = (e) => {
-    console.log(e);
+    console.log(e.target.value);
+    setPost({ title: e.target.value });
   };
   const handleChangeContent = (e) => {
     console.log(e);
+    setPost({ content: e.target.value });
+  };
+
+  const handleForm = (e) => {
+    console.log(e.target.name);
+    console.log(e.target.value);
+
+    setPost({ [e.target.name]: e.target.value }); // [Computed Property Name] 문법 (키값 동적할당 JS문법)
+
+    console.log(post.title);
+    console.log(post.content);
   };
 
   return (
@@ -46,13 +58,15 @@ const ListPage = () => {
           type="text"
           placeholder="제목을 입력하세요.."
           value={post.title}
-          onChange={handleChangeTitle}
+          onChange={handleForm}
+          name="title"
         />
         <input
           type="text"
           placeholder="내용을 입력하세요.."
           value={post.content}
-          onChange={handleChangeContent}
+          onChange={handleForm}
+          name="content"
         />
         <button type="button" onClick={handleWrite}>
           글쓰기
