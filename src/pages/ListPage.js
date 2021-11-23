@@ -12,8 +12,9 @@ const StyledItemBoxDiv = styled.div`
 `;
 
 const ListPage = () => {
+  const [no, setNo] = useState(6);
   const [post, setPost] = useState({
-    id: '',
+    id: no,
     title: '',
     content: '',
   });
@@ -26,34 +27,28 @@ const ListPage = () => {
     { id: 5, title: '제목5', content: '내용5' },
   ]);
 
-  const handleWrite = () => {
-    // ListPage의 setPosts에 담기
-    let post = { id: 6, title: '인풋값' };
-  };
-
-  const handleChangeTitle = (e) => {
-    console.log(e.target.value);
-    setPost({ title: e.target.value });
-  };
-  const handleChangeContent = (e) => {
-    console.log(e);
-    setPost({ content: e.target.value });
+  const handleWrite = (e) => {
+    e.preventDefault(); //submit의 강제 새로고침이벤트 막음
+    console.log(1, post.title);
+    console.log(2, post.content);
+    setPosts([...posts, post]);
+    setNo(no + 1);
   };
 
   const handleForm = (e) => {
     console.log(e.target.name);
     console.log(e.target.value);
 
-    setPost({ [e.target.name]: e.target.value }); // [Computed Property Name] 문법 (키값 동적할당 JS문법)
-
-    console.log(post.title);
-    console.log(post.content);
+    setPost({
+      ...post,
+      [e.target.name]: e.target.value,
+    }); // [Computed Property Name] 문법 (키값 동적할당 JS문법)
   };
 
   return (
     <div>
       <h1>리스트 페이지</h1>
-      <form>
+      <form onSubmit={handleWrite}>
         <input
           type="text"
           placeholder="제목을 입력하세요.."
@@ -68,9 +63,7 @@ const ListPage = () => {
           onChange={handleForm}
           name="content"
         />
-        <button type="button" onClick={handleWrite}>
-          글쓰기
-        </button>
+        <button type="submit">글쓰기</button>
       </form>
       <hr />
       {posts.map((post) => (
