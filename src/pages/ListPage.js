@@ -29,15 +29,19 @@ const ListPage = () => {
 
   const handleWrite = (e) => {
     e.preventDefault(); //submit의 강제 새로고침이벤트 막음
-    console.log(1, post.title);
-    console.log(2, post.content);
-    setPosts([...posts, post]);
+    console.log('handel', no);
+    console.log('post', post.title);
     setNo(no + 1);
+    setPosts([...posts, { ...post, id: no }]);
+    setPost({
+      ...post,
+      id: no,
+    });
   };
 
   const handleForm = (e) => {
-    console.log(e.target.name);
-    console.log(e.target.value);
+    // console.log(e.target.name);
+    // console.log(e.target.value);
 
     setPost({
       ...post,
